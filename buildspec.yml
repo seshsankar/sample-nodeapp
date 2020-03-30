@@ -4,16 +4,16 @@ phases:
     commands: 
       - "echo Build started on `date`"
       - "echo Building the Docker image..."
-      - "docker build -t node-server ."
-      - "docker tag node-server:latest 471908925532.dkr.ecr.us-east-1.amazonaws.com/node-server:latest"
+      - "docker build -t node-app ."
+      - "docker tag node-app:latest 471908925532.dkr.ecr.us-east-1.amazonaws.com/node-app:latest"
   post_build: 
     commands: 
       - "echo Build completed on `date`"
       - "echo Pushing the Docker image..."
-      - "docker push 471908925532.dkr.ecr.us-east-1.amazonaws.com/node-server:latest"
+      - "docker push 471908925532.dkr.ecr.us-east-1.amazonaws.com/node-app:latest"
   pre_build: 
     commands: 
       - "echo Logging in to  ecr..."
-      - "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 471908925532.dkr.ecr.us-east-1.amazonaws.com/node-server"
+      - "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 471908925532.dkr.ecr.us-east-1.amazonaws.com/node-app"
 version: 0.1
 
